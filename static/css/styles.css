@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Roboto:wght@400;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8d7da; /* Rouge clair pour un fond apaisant */
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.8;
+}
+
+h1 {
+    font-family: 'Lora', serif;
+    color: #b22222;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+.category-menu {
+    margin-bottom: 20px;
+}
+
+.category-menu ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.category-menu li {
+    margin: 0;
+}
+
+.category-menu a {
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #b22222; /* Texte rouge pour les catégories */
+    border: 1px solid #b22222;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.category-menu a.active {
+    background-color: #b22222; /* Rouge foncé pour l'élément actif */
+    color: white;
+}
+
+.category-menu a:hover {
+    background-color: #c82333;
+    color: white;
+}
+
+.view-toggle {
+    margin-bottom: 20px;
+}
+
+.view-toggle button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #b22222;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.view-toggle button.active {
+    background-color: #c82333;
+}
+
+.view-toggle button:hover {
+    background-color: #d9534f;
+}
+
+.articles-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.article-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    max-width: 350px;
+    width: 100%;
+    border: 1px solid #b22222;
+}
+
+.article-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.article-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.article-content {
+    padding: 15px;
+}
+
+.article-content h2 {
+    margin: 0;
+    font-size: 18px;
+    color: #b22222;
+}
+
+.article-content h2 a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.article-content h2 a:hover {
+    text-decoration: underline;
+}
+
+.description {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+small {
+    display: block;
+    margin-top: 10px;
+    color: #666;
+}
+
+/* Styles pour l'affichage en liste */
+.list-view .article-card {
+    max-width: 100%;
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    align-items: stretch;
+}
+
+.list-view .article-image {
+    max-width: 200px;
+    height: auto;
+}
+
+.list-view .article-content {
+    flex: 1;
+    padding: 15px;
+}
+
+/* Styles pour l'affichage en grille */
+.grid-view .article-card {
+    max-width: 350px;
+    flex-direction: column;
+}
+
+@media (max-width: 600px) {
+    .article-card {
+        max-width: 100%;
+    }
+}
+.floating-cat {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 200px; /* Augmente la taille du chat */
+    height: 200px;
+    opacity: 0.8;
+    transition: transform 0.3s ease;
+}
+
+.floating-cat:hover {
+    transform: scale(1.1);
+    opacity: 1;
+}
+

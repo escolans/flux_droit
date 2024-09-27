@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualités Juridiques</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<!-- Chat décoratif -->
+<img src="https://i.pinimg.com/originals/5c/27/59/5c2759b6e682d84b4aca20f6e599e0bb.png" alt="Petit chat" class="floating-cat">
+
+<body>
+    <h1>Actualités Juridiques</h1>
+
+    <!-- Menu de sélection des catégories -->
+    <nav class="category-menu">
+        <ul>
+            {% for category in categories %}
+            <li>
+                <a href="/?category={{ category }}" class="{% if category == selected_category %}active{% endif %}">
+                    {{ category }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </nav>
+
+    <!-- Boutons pour changer le mode d'affichage -->
+    <div class="view-toggle">
+        <button id="gridView">Grille</button>
+        <button id="listView" class="active">Liste</button>
+    </div>
+
+    <div class="articles-container list-view" id="articlesContainer">
+        {% for article in articles %}
+        <div class="article-card 
+            {% if article.category == 'Civil' %}civil
+            {% elif article.category == 'Pénal' %}penal
+            {% elif article.category == 'Législation' %}legislation
+            {% elif article.category == 'Affaires' %}affaires
+            {% endif %}">
+            {% if article.image %}
+            <img src="{{ article.image }}" alt="Image de l'article" class="article-image">
+            {% endif %}
+            <div class="article-content">
+                <h2><a href="{{ article.link }}" target="_blank">{{ article.title }}</a></h2>
+                <p class="description">{{ article.description }}</p>
+                <small>Publié le : {{ article.published }} | Source : {{ article.source }} | Domaine : {{ article.category }}</small>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <script>
+        // Récupère le mode d'affichage depuis le localStorage
+        const savedView = localStorage.getItem('viewMode') || 'list'; // Défaut à liste
+
+        const articlesContainer = document.getElementById('articlesContainer');
+        const gridViewButton = document.getElementById('gridView');
+        const listViewButton = document.getElementById('listView');
+
+        // Applique le mode d'affichage enregistré
+        if (savedView === 'grid') {
+            articlesContainer.classList.add('grid-view');
+            gridViewButton.classList.add('active');
+        } else {
+            articlesContainer.classList.add('list-view');
+            listViewButton.classList.add('active');
+        }
+
+        // Gestion des boutons de changement d'affichage
+        gridViewButton.addEventListener('click', function() {
+            articlesContainer.classList.add('grid-view');
+            articlesContainer.classList.remove('list-view');
+            localStorage.setItem('viewMode', 'grid');
+            this.classList.add('active');
+            listViewButton.classList.remove('active');
+        });
+
+        listViewButton.addEventListener('click', function() {
+            articlesContainer.classList.add('list-view');
+            articlesContainer.classList.remove('grid-view');
+            localStorage.setItem('viewMode', 'list');
+            this.classList.add('active');
+            gridViewButton.classList.remove('active');
+        });
+    </script>
+</body>
+</html>

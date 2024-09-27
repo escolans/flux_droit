@@ -1,0 +1,64 @@
+{
+  "sources": [
+    {
+      "name": "Dalloz Actualité",
+      "url": "https://www.dalloz-actualite.fr/rss.xml",
+      "description": "Actualité juridique en France, avec des analyses et des commentaires sur les dernières décisions de justice.",
+      "category": "Général"
+    },
+    {
+      "name": "Dalloz Actualité - Administratif",
+      "url": "https://www.dalloz-actualite.fr/taxonomy/term/270/feed.xml",
+      "description": "Actualité juridique en France, avec des analyses et des commentaires sur les dernières décisions de justice.",
+      "category": "Administratif"
+    },
+    {
+      "name": "Dalloz Actualité - Affaires",
+      "url": "https://www.dalloz-actualite.fr/taxonomy/term/329/feed.xml",
+      "description": "Actualité juridique en France, avec des analyses et des commentaires sur les dernières décisions de justice.",
+      "category": "Affaires"
+    },
+    {
+      "name": "Dalloz Actualité - Civil",
+      "url": "https://www.dalloz-actualite.fr/taxonomy/term/312/feed.xml",
+      "description": "Actualité juridique en France, avec des analyses et des commentaires sur les dernières décisions de justice.",
+      "category": "Civile"
+    },
+    {
+      "name": "Dalloz Actualité - Européen",
+      "url": "https://www.dalloz-actualite.fr/taxonomy/term/384/feed.xml",
+      "description": "Actualité juridique en France, avec des analyses et des commentaires sur les dernières décisions de justice.",
+      "category": "Européen"
+    },
+    {
+      "name": "Dalloz Actualité - Pénale",
+      "url": "https://www.dalloz-actualite.fr/taxonomy/term/291/feed.xml",
+      "description": "Actualité juridique en France, avec des analyses et des commentaires sur les dernières décisions de justice.",
+      "category": "Pénale"
+    },
+    {
+      "name": "Dalloz Actualité - Social",
+      "url": "https://www.dalloz-actualite.fr/taxonomy/term/342/feed.xml",
+      "description": "Actualité juridique en France, avec des analyses et des commentaires sur les dernières décisions de justice.",
+      "category": "Sociale"
+    },
+    {
+      "name": "Lextenso",
+      "url": "https://www.labase-lextenso.fr/flux-rss.xml",
+      "description": "Portail juridique fournissant des actualités et des publications sur la jurisprudence et les réformes législatives.",
+      "category": "Général"
+    },
+    {
+      "name": "Legifrance",
+      "url": "https://legifrss.org/latest",
+      "description": "Site officiel du gouvernement français pour l'accès aux textes législatifs et réglementaires et à la jurisprudence.",
+      "category": "Législation"
+    },
+    {
+      "name": "Village de la Justice",
+      "url": "https://www.village-justice.com/articles/spip.php?page=backend",
+      "description": "Plateforme communautaire pour les professionnels du droit avec des articles, débats, et offres d'emploi.",
+      "category": "Professionnel"
+    }
+  ]
+}
