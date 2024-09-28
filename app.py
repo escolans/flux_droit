@@ -4,6 +4,8 @@ import json
 from bs4 import BeautifulSoup
 from dateutil import parser as date_parser
 from cachetools import TTLCache
+import os
+
 
 # Initialisation de l'application Flask
 app = Flask(__name__, template_folder='.')
@@ -103,4 +105,5 @@ def index():
     return render_template('index.html', articles=articles, categories=categories, selected_category=selected_category)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5001))  # Utilise le port défini par Render ou 5000 par défaut
+    app.run(host='0.0.0.0', port=port)
