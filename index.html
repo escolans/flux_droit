@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actualités Juridiques</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <meta charset="UTF-8"> <!-- Définit le jeu de caractères utilisé -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Assure la compatibilité avec les anciennes versions d'IE -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Rend la page responsive sur tous les appareils -->
+    <title>Actualités Juridiques</title> <!-- Titre de la page qui s'affiche dans l'onglet du navigateur -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}"> <!-- Lien vers le fichier CSS pour le style -->
 </head>
 <!-- Chat décoratif -->
-<img src="https://i.pinimg.com/originals/5c/27/59/5c2759b6e682d84b4aca20f6e599e0bb.png" alt="Petit chat" class="floating-cat">
+<img src="https://i.pinimg.com/originals/5c/27/59/5c2759b6e682d84b4aca20f6e599e0bb.png" alt="Petit chat" class="floating-cat"> <!-- Image d'un chat pour la décoration -->
 
 <body>
-    <h1>Actualités Juridiques</h1>
+    <h1>Actualités Juridiques</h1> <!-- Titre principal de la page -->
 
     <!-- Menu de sélection des catégories -->
     <nav class="category-menu">
         <ul>
-            {% for category in categories %}
+            {% for category in categories %} <!-- Boucle pour afficher les catégories -->
             <li>
-                <a href="/?category={{ category }}" class="{% if category == selected_category %}active{% endif %}">
-                    {{ category }}
+                <a href="/?category={{ category }}" class="{% if category == selected_category %}active{% endif %}"> <!-- Lien de chaque catégorie -->
+                    {{ category }} <!-- Affiche le nom de la catégorie -->
                 </a>
             </li>
             {% endfor %}
@@ -28,25 +28,26 @@
 
     <!-- Boutons pour changer le mode d'affichage -->
     <div class="view-toggle">
-        <button id="gridView">Grille</button>
-        <button id="listView" class="active">Liste</button>
+        <button id="gridView">Grille</button> <!-- Bouton pour l'affichage en grille -->
+        <button id="listView" class="active">Liste</button> <!-- Bouton pour l'affichage en liste -->
     </div>
 
+    <!-- Conteneur pour les articles -->
     <div class="articles-container list-view" id="articlesContainer">
-        {% for article in articles %}
+        {% for article in articles %} <!-- Boucle pour afficher chaque article -->
         <div class="article-card 
             {% if article.category == 'Civil' %}civil
             {% elif article.category == 'Pénal' %}penal
             {% elif article.category == 'Législation' %}legislation
             {% elif article.category == 'Affaires' %}affaires
-            {% endif %}">
-            {% if article.image %}
-            <img src="{{ article.image }}" alt="Image de l'article" class="article-image">
+            {% endif %}"> <!-- Associe une classe en fonction de la catégorie de l'article -->
+            {% if article.image %} <!-- Vérifie si l'article a une image -->
+            <img src="{{ article.image }}" alt="Image de l'article" class="article-image"> <!-- Affiche l'image de l'article -->
             {% endif %}
             <div class="article-content">
-                <h2><a href="{{ article.link }}" target="_blank">{{ article.title }}</a></h2>
-                <p class="description">{{ article.description }}</p>
-                <small>Publié le : {{ article.published }} | Source : {{ article.source }} | Domaine : {{ article.category }}</small>
+                <h2><a href="{{ article.link }}" target="_blank">{{ article.title }}</a></h2> <!-- Titre de l'article avec un lien -->
+                <p class="description">{{ article.description }}</p> <!-- Description de l'article -->
+                <small>Publié le : {{ article.published }} | Source : {{ article.source }} | Domaine : {{ article.category }}</small> <!-- Informations supplémentaires sur l'article -->
             </div>
         </div>
         {% endfor %}
@@ -54,36 +55,36 @@
 
     <script>
         // Récupère le mode d'affichage depuis le localStorage
-        const savedView = localStorage.getItem('viewMode') || 'list'; // Défaut à liste
+        const savedView = localStorage.getItem('viewMode') || 'list'; // Définit la vue par défaut en liste
 
-        const articlesContainer = document.getElementById('articlesContainer');
-        const gridViewButton = document.getElementById('gridView');
-        const listViewButton = document.getElementById('listView');
+        const articlesContainer = document.getElementById('articlesContainer'); // Sélectionne le conteneur des articles
+        const gridViewButton = document.getElementById('gridView'); // Bouton d'affichage en grille
+        const listViewButton = document.getElementById('listView'); // Bouton d'affichage en liste
 
         // Applique le mode d'affichage enregistré
         if (savedView === 'grid') {
-            articlesContainer.classList.add('grid-view');
-            gridViewButton.classList.add('active');
+            articlesContainer.classList.add('grid-view'); // Active la vue en grille
+            gridViewButton.classList.add('active'); // Active le bouton grille
         } else {
-            articlesContainer.classList.add('list-view');
-            listViewButton.classList.add('active');
+            articlesContainer.classList.add('list-view'); // Active la vue en liste
+            listViewButton.classList.add('active'); // Active le bouton liste
         }
 
         // Gestion des boutons de changement d'affichage
         gridViewButton.addEventListener('click', function() {
-            articlesContainer.classList.add('grid-view');
-            articlesContainer.classList.remove('list-view');
-            localStorage.setItem('viewMode', 'grid');
-            this.classList.add('active');
-            listViewButton.classList.remove('active');
+            articlesContainer.classList.add('grid-view'); // Passe à la vue en grille
+            articlesContainer.classList.remove('list-view'); // Désactive la vue en liste
+            localStorage.setItem('viewMode', 'grid'); // Sauvegarde la préférence utilisateur
+            this.classList.add('active'); // Active le bouton grille
+            listViewButton.classList.remove('active'); // Désactive le bouton liste
         });
 
         listViewButton.addEventListener('click', function() {
-            articlesContainer.classList.add('list-view');
-            articlesContainer.classList.remove('grid-view');
-            localStorage.setItem('viewMode', 'list');
-            this.classList.add('active');
-            gridViewButton.classList.remove('active');
+            articlesContainer.classList.add('list-view'); // Passe à la vue en liste
+            articlesContainer.classList.remove('grid-view'); // Désactive la vue en grille
+            localStorage.setItem('viewMode', 'list'); // Sauvegarde la préférence utilisateur
+            this.classList.add('active'); // Active le bouton liste
+            gridViewButton.classList.remove('active'); // Désactive le bouton grille
         });
     </script>
 </body>
