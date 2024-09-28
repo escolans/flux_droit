@@ -1,0 +1,6 @@
+Flask
+feedparser
+beautifulsoup4
+python-dateutil
+cachetools
+gunicorn

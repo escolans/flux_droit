@@ -6,7 +6,7 @@ from dateutil import parser as date_parser
 from cachetools import TTLCache
 
 # Initialisation de l'application Flask
-app = Flask(__name__)
+app = Flask(__name__, template_folder='.')
 app.secret_key = 'supersecretkey'  # Nécessaire pour utiliser flash messages
 
 # Création du cache pour les flux RSS avec une durée de vie de 10 minutes
