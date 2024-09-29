@@ -7,7 +7,7 @@ from cachetools import TTLCache  # Pour gérer le cache avec une durée de vie
 import os  # Pour accéder aux variables d'environnement
 
 # Initialisation de l'application Flask avec le dossier des templates défini
-app = Flask(__name__, template_folder='.')
+app = Flask(__name__)
 app.secret_key = 'supersecretkey'  # Clé secrète nécessaire pour les messages flash
 
 # Création d'un cache avec une taille maximale de 100 entrées et une durée de vie de 10 minutes
