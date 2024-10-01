@@ -79,13 +79,18 @@ def extract_image(entry):
                 return link.href  # Retourne l'URL de l'image si trouvée
     return None  # Retourne None si aucune image n'est trouvée
 
-# Fonction pour extraire et nettoyer la description de l'article (limite à 150 caractères)
 def extract_description(entry):
-    # Vérifie si l'article contient un résumé ("summary")
-    if 'summary' in entry:
-        # Utilise BeautifulSoup pour nettoyer le HTML du résumé
-        return BeautifulSoup(entry.summary, 'html.parser').text[:150] + '...'  # Limite à 150 caractères
-    return "Pas de description disponible."  # Retourne un texte par défaut si aucune description n'est présente
+    # Vérifie si l'article a une propriété "summary" et qu'elle n'est pas vide
+    if 'summary' in entry and entry.summary:
+        try:
+            # Parse le HTML avec BeautifulSoup et limite à 150 caractères
+            return BeautifulSoup(entry.summary, 'html.parser').text[:150] + '...'
+        except Exception as e:
+            # Gère les erreurs de parsing et retourne une description par défaut
+            print(f"Erreur lors du parsing de la description : {e}")
+            return "Description non disponible."
+    # Retourne une description par défaut si aucune n'est trouvée
+    return "Pas de description disponible."
 
 # Fonction pour analyser et formater la date de publication d'un article
 def parse_date(entry):
@@ -162,6 +167,6 @@ def index():
 # Point d'entrée principal pour démarrer l'application Flask
 if __name__ == '__main__':
     # Utilise le port défini par Render ou 5001 par défaut
-    port = int(os.environ.get('PORT', 5001))
+    port = int(os.environ.get('PORT', 5000))
     # Démarre l'application Flask en mode production
     app.run(host='0.0.0.0', port=port)
